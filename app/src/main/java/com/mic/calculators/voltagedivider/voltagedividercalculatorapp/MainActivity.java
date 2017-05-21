@@ -145,6 +145,9 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    /**
+     * Calcula a saída de voltagem.
+     */
     private void calc() {
         if(vin == 0 || r1 == 0 || r2 == 0) {
             vout = 0;
