@@ -21,12 +21,16 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    // Tag for debug
     private final String TAG = "MainActivity";
 
+    // filds
     private float vin = 0;
     private float r1 = 0;
     private float r2 = 0;
     private float vout = 0;
+
+    // Components
     private TextView textVout;
     private EditText editVin;
     private EditText editR1;
