@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Voltage Divider Calculator App</string>
-    <string name="app_email">michael.leal.costa@gmail.com</string>
+    <string name="app_email" translatable="false">michael.leal.costa@gmail.com</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -9,10 +9,10 @@
     <string name="voltage_divider_calc">Voltage Divider Calculator</string>
 
     <!-- Hints -->
-    <string name="vin_hint">Vin</string>
-    <string name="r1_hint">R1</string>
-    <string name="r2_hint">R2</string>
-    <string name="vout_hint">Vout</string>
+    <string name="vin_hint" translatable="false">Vin</string>
+    <string name="r1_hint" translatable="false">R1</string>
+    <string name="r2_hint" translatable="false">R2</string>
+    <string name="vout_hint" translatable="false">Vout</string>
 
     <string name="edit_text_cleared">Clean</string>
 </resources>

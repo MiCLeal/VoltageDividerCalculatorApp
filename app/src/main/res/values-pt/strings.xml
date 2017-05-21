@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Calculadora Divisora de Tensão</string>
+    <string name="edit_text_cleared">Limpar</string>
+    <string name="action_settings">Configurações</string>
+    <string name="voltage_divider_calc">Calculadora Divisora de Tensão</string>
+    <string name="navigation_drawer_close">Fechar navegação</string>
+    <string name="navigation_drawer_open">Abrir navegação</string>
+</resources>
