@@ -28,6 +28,9 @@ public class MainActivity extends AppCompatActivity
     private float r2 = 0;
     private float vout = 0;
     private TextView textVout;
+    private EditText editVin;
+    private EditText editR1;
+    private EditText editR2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +39,9 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        final EditText editVin = (EditText) findViewById(R.id.edit_vin);
-        final EditText editR1 = (EditText) findViewById(R.id.edit_r1);
-        final EditText editR2 = (EditText) findViewById(R.id.edit_r2);
+        editVin = (EditText) findViewById(R.id.edit_vin);
+        editR1 = (EditText) findViewById(R.id.edit_r1);
+        editR2 = (EditText) findViewById(R.id.edit_r2);
         textVout = (TextView) findViewById(R.id.text_vout);
 
         editVin.addTextChangedListener(new TextWatcher() {
@@ -119,9 +122,10 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
 
                 try {
-                    editR1.clearComposingText();
-                    editR2.clearComposingText();
-                    editVin.clearComposingText();
+                    editR1.setText(null);
+                    editR2.setText(null);
+                    editVin.setText(null);
+                    textVout.setText(null);
                 } catch (Exception ex) {
                     Log.e(TAG, "fab Clean Texts", ex);
                 }
