@@ -43,24 +43,27 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // Inicializando os componentes.
         editVin = (EditText) findViewById(R.id.edit_vin);
         editR1 = (EditText) findViewById(R.id.edit_r1);
         editR2 = (EditText) findViewById(R.id.edit_r2);
         textVout = (TextView) findViewById(R.id.text_vout);
 
+
         editVin.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+                // Método executa Antes da mudança de texto.
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                // Método eexecuta durante a mudança de texto.
             }
 
             @Override
             public void afterTextChanged(Editable s) {
+                // Método executa depois da mudança de texto.
                 try {
                     if (s.length() > 0) {
                         vin = Float.parseFloat(s.toString());
@@ -75,16 +78,17 @@ public class MainActivity extends AppCompatActivity
         editR1.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+                // Método executa Antes da mudança de texto.
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                // Método eexecuta durante a mudança de texto.
             }
 
             @Override
             public void afterTextChanged(Editable s) {
+                // Método executa depois da mudança de texto.
                 try {
                     if (s.length() > 0) {
                         r1 = Float.parseFloat(s.toString());
@@ -99,16 +103,17 @@ public class MainActivity extends AppCompatActivity
         editR2.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+                // Método executa Antes da mudança de texto.
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                // Método eexecuta durante a mudança de texto.
             }
 
             @Override
             public void afterTextChanged(Editable s) {
+                // Método executa depois da mudança de texto.
                 try {
                     if (s.length() > 0) {
                         r2 = Float.parseFloat(s.toString());
