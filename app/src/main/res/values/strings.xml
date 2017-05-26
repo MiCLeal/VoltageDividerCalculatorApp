@@ -15,4 +15,9 @@
     <string name="vout_hint" translatable="false">Vout</string>
 
     <string name="edit_text_cleared">Clean</string>
+    <string name="feedback">Feedback</string>
+    <string name="share">Share</string>
+    <string name="share_message">"Hey! Look this App: "</string>
+    <string name="app_link" translatable="false">http://GitHub.com/MiCLeal/VoltageDividerCalculatorApp</string>
+    <string name="share_options">Share Options</string>
 </resources>

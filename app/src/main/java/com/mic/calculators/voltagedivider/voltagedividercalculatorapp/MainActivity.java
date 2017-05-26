@@ -1,8 +1,12 @@
 package com.mic.calculators.voltagedivider.voltagedividercalculatorapp;
 
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.ShareActionProvider;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -24,7 +28,7 @@ public class MainActivity extends AppCompatActivity
     // Tag for debug
     private final String TAG = "MainActivity";
 
-    // filds
+    // fields
     private float vin = 0;
     private float r1 = 0;
     private float r2 = 0;
@@ -35,12 +39,14 @@ public class MainActivity extends AppCompatActivity
     private EditText editVin;
     private EditText editR1;
     private EditText editR2;
+    private ShareActionProvider mShareActionProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         setSupportActionBar(toolbar);
 
         // Inicializando os componentes.
@@ -70,6 +76,7 @@ public class MainActivity extends AppCompatActivity
                         calc();
                     }
                 } catch (Exception ex) {
+                    // Mostra Log durante o Debug.
                     Log.e(TAG, "editVin: Text Changed", ex);
                 }
             }
@@ -95,6 +102,7 @@ public class MainActivity extends AppCompatActivity
                         calc();
                     }
                 } catch (Exception ex) {
+                    // Mostra Log durante o Debug.
                     Log.e(TAG, "editR1: Text Changed", ex);
                 }
             }
@@ -120,12 +128,12 @@ public class MainActivity extends AppCompatActivity
                         calc();
                     }
                 } catch (Exception ex) {
+                    // Mostra Log durante o Debug.
                     Log.e(TAG, "editR2: Text Changed", ex);
                 }
             }
         });
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -135,12 +143,13 @@ public class MainActivity extends AppCompatActivity
                     editR2.setText(null);
                     editVin.setText(null);
                     textVout.setText(null);
+                    Snackbar.make(view, R.string.edit_text_cleared, Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
                 } catch (Exception ex) {
+                    // Mostra Log durante o Debug.
                     Log.e(TAG, "fab Clean Texts", ex);
                 }
 
-                Snackbar.make(view, R.string.edit_text_cleared, Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
             }
         });
 
@@ -162,8 +171,25 @@ public class MainActivity extends AppCompatActivity
             vout = 0;
         } else {
             vout = r2/(r1 + r2) * vin;
-            textVout.setText(Float.toString(vout));
+            textVout.setText(String.valueOf(vout));
         }
+    }
+
+    /**
+     * Método para compartilhar o App escolhendo que meio de "Comunicação" utilizar.
+     */
+    private void shareApp() {
+        // Cria um Intent com a ação de envio.
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        // Define o tipo de dado a ser enviado
+        shareIntent.setType("text/plain");
+        // Mensagem a ser enviada
+        String shareBodyText = getString(R.string.share_message) + getString(R.string.app_link);
+        // Adiciona os Extras ao Intent
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject Here");
+        shareIntent.putExtra(Intent.EXTRA_TEXT, shareBodyText);
+        // Inicia a Activity para escolher o método de envio.
+        startActivity(Intent.createChooser(shareIntent, getString(R.string.share_options)));
     }
 
     @Override
@@ -180,6 +206,7 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+
         return true;
     }
 
@@ -200,7 +227,7 @@ public class MainActivity extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
@@ -213,7 +240,8 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
-
+            shareApp();
+            Log.d(TAG, "Testing Share");
         } else if (id == R.id.nav_send) {
 
         }
