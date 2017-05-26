@@ -22,6 +22,8 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -171,7 +173,7 @@ public class MainActivity extends AppCompatActivity
             vout = 0;
         } else {
             vout = r2/(r1 + r2) * vin;
-            textVout.setText(String.valueOf(vout));
+            textVout.setText(String.format(Locale.getDefault(), "%.2f", vout));
         }
     }
 
